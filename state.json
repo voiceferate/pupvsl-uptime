@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T19:58:14.801381+00:00",
+  "healthy": true,
+  "checks": [
+    {
+      "name": "management_https",
+      "healthy": true,
+      "code": "HTTPS_OK"
+    },
+    {
+      "name": "player_loader",
+      "healthy": true,
+      "code": "HTTPS_OK"
+    },
+    {
+      "name": "player_stable",
+      "healthy": true,
+      "code": "HTTPS_OK"
+    }
+  ],
+  "notifiedHealthy": true
+}

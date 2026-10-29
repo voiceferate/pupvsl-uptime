@@ -25,7 +25,8 @@ a guaranteed five-minute detection time. A GitHub-wide outage is also a blind sp
 Sources: [runner availability](https://docs.github.com/en/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job),
 [scheduled-workflow limits](https://docs.github.com/en/actions/how-tos/troubleshoot-workflows).
 
-To update: review/test the canonical script, then run Management's operator-only
+To update: review/test the canonical script, stage `deploy/ubuntu/seal-monitor-credentials.php`
+as root at `/srv/pupvsl-management/incoming/seal-monitor-credentials.php`, then run Management's operator-only
 `node deploy/external-monitor/install.mjs` using the existing Git credential and root
 SSH access. Root seals the existing Telegram settings using GitHub's public key;
 plaintext Telegram secrets do not leave the VPS for the operator's PC.

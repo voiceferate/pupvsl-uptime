@@ -1,0 +1,29 @@
+name: External HTTPS monitor
+on:
+  schedule:
+    - cron: '3-58/5 * * * *'
+  workflow_dispatch:
+    inputs:
+      test_notification:
+        description: Send one explicit setup test notification
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: external-uptime
+  cancel-in-progress: false
+jobs:
+  monitor:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - name: Fetch immutable monitor source
+        run: curl --fail --silent --show-error --retry 2 --max-time 20 "https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$GITHUB_SHA/monitor.py" -o "$RUNNER_TEMP/pupvsl-monitor.py"
+      - name: Check HTTPS and notify on transitions
+        env:
+          MONITOR_GITHUB_TOKEN: ${{ github.token }}
+          MONITOR_TELEGRAM_TOKEN: ${{ secrets.PUPVSL_MONITOR_TELEGRAM_TOKEN }}
+          MONITOR_TELEGRAM_CHAT: ${{ secrets.PUPVSL_MONITOR_TELEGRAM_CHAT }}
+          MONITOR_TEST_NOTIFICATION: ${{ inputs.test_notification || false }}
+        run: python3 "$RUNNER_TEMP/pupvsl-monitor.py"

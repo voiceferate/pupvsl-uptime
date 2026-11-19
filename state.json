@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-18T02:10:12.078926+00:00",
-  "healthy": true,
+  "checkedAt": "2026-11-19T00:58:17.903892+00:00",
+  "healthy": false,
   "checks": [
     {
       "name": "management_https",
-      "healthy": true,
-      "code": "HTTPS_OK"
+      "healthy": false,
+      "code": "HTTPS_UNAVAILABLE"
     },
     {
       "name": "player_loader",
-      "healthy": true,
-      "code": "HTTPS_OK"
+      "healthy": false,
+      "code": "HTTPS_UNAVAILABLE"
     },
     {
       "name": "player_stable",
-      "healthy": true,
-      "code": "HTTPS_OK"
+      "healthy": false,
+      "code": "HTTPS_UNAVAILABLE"
     }
   ],
   "notifiedHealthy": true
